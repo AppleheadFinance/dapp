@@ -1,0 +1,317 @@
+{
+  "version": "0.1.0",
+  "name": "aphd_token_sale",
+  "instructions": [
+    {
+      "name": "processInitSale",
+      "accounts": [
+        {
+          "name": "tokenHolderAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "aphdMint",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenVaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultTokenAuthority",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenSaleAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "rent",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "vaultNonce",
+          "type": "u8"
+        },
+        {
+          "name": "vaultTokenAuthNonce",
+          "type": "u8"
+        },
+        {
+          "name": "tokenSaleAmount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "processFundSale",
+      "accounts": [
+        {
+          "name": "tokenHolderAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenSaleAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenVaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenHolderAphdAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "tokenSaleAmount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "processExecuteSale",
+      "accounts": [
+        {
+          "name": "userAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenVaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "vaultTokenAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "aphdMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenSaleAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "userAphdAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userUsdtAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenHolderAccount",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenHolderUsdtAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "usdtAmount",
+          "type": "u64"
+        }
+      ]
+    },
+    {
+      "name": "processPauseSale",
+      "accounts": [
+        {
+          "name": "initAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenSaleAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "processResumeSale",
+      "accounts": [
+        {
+          "name": "initAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenSaleAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "processEndSale",
+      "accounts": [
+        {
+          "name": "initAccount",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "tokenSaleAccount",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "processCloseSale",
+      "accounts": [
+        {
+          "name": "authority",
+          "isMut": false,
+          "isSigner": true
+        },
+        {
+          "name": "feeTaker",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "sale",
+          "isMut": true,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "TokenSale",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "isInitialized",
+            "type": "bool"
+          },
+          {
+            "name": "initPubkey",
+            "type": "publicKey"
+          },
+          {
+            "name": "saleTokenAccountPubkey",
+            "type": "publicKey"
+          },
+          {
+            "name": "tokenSaleAmount",
+            "type": "u64"
+          },
+          {
+            "name": "tokenSalePrice",
+            "type": "u64"
+          },
+          {
+            "name": "tokenSalePaused",
+            "type": "bool"
+          },
+          {
+            "name": "tokenSaleEnded",
+            "type": "bool"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "TokenSaleError",
+      "type": {
+        "kind": "enum",
+        "variants": [
+          {
+            "name": "TokenSaleNotInit"
+          },
+          {
+            "name": "TokenSaleAmountExceeds"
+          },
+          {
+            "name": "TokenSaleFunded"
+          },
+          {
+            "name": "NoEnough"
+          },
+          {
+            "name": "TokenSalePaused"
+          },
+          {
+            "name": "TokenSaleEnded"
+          },
+          {
+            "name": "TokenSaleComplete"
+          },
+          {
+            "name": "AmountMinimum"
+          },
+          {
+            "name": "AmountMaximum"
+          },
+          {
+            "name": "AmountExceeds"
+          }
+        ]
+      }
+    }
+  ],
+  "metadata": {
+    "address": "6E4V9JCW4G9TnFuTx2iS7FpAt7nAuPHQLiwvMiRwqjFV"
+  }
+}
