@@ -1,0 +1,48 @@
+@tailwind base;
+@layer base {
+  a {
+    @apply text-blue-600 underline;
+  }
+}
+@tailwind components;
+@tailwind utilities;
+
+* {
+  font-family: "Rubik", sans-serif;
+}
+
+.roundeds {
+  @apply rounded-full;
+  @apply w-[150px];
+  @apply h-[77px];
+  @apply text-base;
+}
+
+.roundedmore {
+  @apply rounded-full;
+  @apply w-[188px];
+  @apply h-[77px];
+  @apply text-lg;
+}
+
+.wallet-adapter-button.walletbtn {
+  @apply btn btn-secondary btn-outline outline;
+}
+
+.hover {
+  @apply text-secondary;
+  @apply font-semibold;
+  @apply border-y;
+  @apply border-y-secondary pt-2 px-3;
+}
+
+.bordertr > *:not(:last-child) {
+  border-bottom: 2.5px solid #9932cc;
+}
+
+.custom {
+  min-height: calc(100vh - 106px - 744px);
+}
+.custom .content {
+  min-height: calc(100vh - 106px - 744px);
+}
