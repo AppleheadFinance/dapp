@@ -256,10 +256,6 @@
             "type": "u64"
           },
           {
-            "name": "tokenSalePrice",
-            "type": "u64"
-          },
-          {
             "name": "tokenSalePaused",
             "type": "bool"
           },

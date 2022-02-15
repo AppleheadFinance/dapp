@@ -23,6 +23,7 @@ interface Phantom {
 const Sale = () => {
   
   const [depositValue, setDepositValue] = useState(100);
+  const [tokenPrice, setTokenPrice] = useState(0.1);
   
   const { purchase } = React.useContext<any>(PurchaseContext);
   const typeDepositeValue = (value: any) => {
@@ -32,6 +33,16 @@ const Sale = () => {
   const { wallet, publicKey, sendTransaction } = useWallet();
 
   useEffect(() => {
+    const currentTimeInSeconds=Math.floor(Date.now()/1000);
+    const march_day = 1646082000; // March 1, UTC+3
+    const period = 1296000; //15days
+    if(currentTimeInSeconds < march_day) {
+      setTokenPrice(0.1);
+    } else if(currentTimeInSeconds >= march_day) {
+      let cur_price = 0.125 + (Math.floor((currentTimeInSeconds - march_day) / period )) * 0.025;
+      setTokenPrice(cur_price);
+    }
+
   }, []);
 
   return (
@@ -54,7 +65,7 @@ const Sale = () => {
                   <Image src={USDT} alt="USDT" width={41} height={41} />
                 </div>
                 <div className="text-[25px] tablet:text-[20px] tokentemp:text-[18px] mobilemedium:text-[14px] font-medium leading-[18px] mobile:leading-[21px] tracking-[1px] mobile:tracking-normal">
-                  0.1
+                  {tokenPrice}
                 </div>
               </div>
             </div>
