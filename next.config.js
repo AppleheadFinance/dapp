@@ -13,7 +13,7 @@ const plugins = [
       reactStrictMode: true,
       images: {
         loader: "imgix",
-        path: "appleheadfinance.com",
+        path: "https://appleheadfinance.com/",
       },
     },
   ],
